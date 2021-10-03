@@ -15,20 +15,34 @@
 
 //2. Rotate
 function rotateArr(array, shiftBy){
-    if(shiftBy >= array.length/2){
-        for(i = array.length-1; i >= shiftBy; i--){
-            array[i-array.length+1] = array[i-array.length];
-        console.log(array[i]);
+    if(shiftBy > 0){
+        if(shiftBy < array.length){
+            for(var i = 0; i < shiftBy; i++){
+                var temp = array[array.length-1];
+                for(var k = array.length-2;k >= 0; k--){
+                    array[k+1] = array[k];
+                }
+                array[0] = temp;
+            }
+            console.log(array);
+            } else {
+                console.log("shiftBy parameter cannot exceed size of given array")
         }
-    } else if(shiftBy<= array.length/2){
-        for(i = 0; i < shiftBy; i++){
-            console.log(array[i]);
+    } else {
+        for(var i = array.length-1; i >= 0; i--){
+            var temp = array[0];
+            console.log(array[i])
+            for(var k = array.length;k <= 0; k--){
+                console.log(k);
+                array[k-1] = array[k];
+            }
+            array[0] = temp;
         }
+        console.log(array);
     }
-    console.log(array);
 }
-myArr = [1,2,3,4,5,6,7,8,9,10];
-rotateArr(myArr,5)
+myArr = [1,2,3,4,5,6,7,8,9];
+rotateArr(myArr, 2);
 
 
 
